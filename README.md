@@ -1,17 +1,17 @@
-# Logfull
+# Logover
 
 A blazingly brilliant logger for JavaScript applications. The logger uses eye-catching output to make it easy to spot your logs.
 
 ## Usage
 
 ```javascript
-import logfull, { debug, info, warn, error } from "logfull";
+import logover, { debug, info, warn, error } from "logover";
 
-const logfullOptions = {
+const logoverOptions = {
   level: "debug",
 };
 
-logfull(logfullOptions);
+logover(logoverOptions);
 
 debug("0");
 info("1");

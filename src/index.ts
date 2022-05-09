@@ -13,7 +13,7 @@ const options = {
   debug: "🟢%cDEBUG: ",
 };
 
-export default function Logfull(ops?: Partial<typeof options>) {
+export default function Logover(ops?: Partial<typeof options>) {
   if (ops) {
     Object.keys(ops).map((key) => {
       if (!options.hasOwnProperty(key)) {

@@ -1,5 +1,5 @@
 {
-  "name": "logfull",
+  "name": "logover",
   "version": "1.0.0",
   "description": "A blazingly brilliant logger for JavaScript applications",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShaunSHamilton/logfull.git"
+    "url": "git+https://github.com/ShaunSHamilton/logover.git"
   },
   "keywords": [
     "log",
@@ -20,9 +20,9 @@
   "author": "Shaun Hamilton",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ShaunSHamilton/logfull/issues"
+    "url": "https://github.com/ShaunSHamilton/logover/issues"
   },
-  "homepage": "https://github.com/ShaunSHamilton/logfull#readme",
+  "homepage": "https://github.com/ShaunSHamilton/logover#readme",
   "devDependencies": {
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"

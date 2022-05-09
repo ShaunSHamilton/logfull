@@ -1,10 +1,10 @@
-import logfull, { debug, info, warn, error } from "../src/index";
+import logover, { debug, info, warn, error } from "../src/index";
 
-const logfullOptions = {
+const logoverOptions = {
   level: "debug",
 };
 
-logfull(logfullOptions);
+logover(logoverOptions);
 
 debug("0");
 info("1");

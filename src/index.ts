@@ -6,11 +6,14 @@ const LogLevel = {
 };
 
 const options = {
-  // @ts-expect-error Error from browser build
-  logLevel: process?.env?.LOG_LEVEL || LogLevel.info,
+  level: process?.env?.LOG_LEVEL || LogLevel.info,
+  info: "🔵%cINFO: ",
+  warn: "🟠%cWARN: ",
+  error: "🔴%cERROR: ",
+  debug: "🟢%cDEBUG: ",
 };
 
-export default function Logfull(ops?: typeof options) {
+export default function Logfull(ops?: Partial<typeof options>) {
   if (ops) {
     Object.keys(ops).map((key) => {
       if (!options.hasOwnProperty(key)) {
@@ -22,23 +25,23 @@ export default function Logfull(ops?: typeof options) {
 }
 
 export function info(...args: any[]): void {
-  if (LogLevel[options.logLevel] <= LogLevel.info) {
-    console.info("🔵%cINFO: ", "color: blue", ...args);
+  if (LogLevel[options.level] <= LogLevel.info) {
+    console.info(options.info, "color: blue", ...args);
   }
 }
 export function warn(...args: any[]): void {
-  if (LogLevel[options.logLevel] <= LogLevel.warn) {
-    console.warn("🟠%cWARN: ", "color: orange", ...args);
+  if (LogLevel[options.level] <= LogLevel.warn) {
+    console.warn(options.warn, "color: orange", ...args);
   }
 }
 export function error(...args: any[]): void {
-  if (LogLevel[options.logLevel] <= LogLevel.error) {
-    console.error("🔴%cERROR: ", "color: red", ...args);
+  if (LogLevel[options.level] <= LogLevel.error) {
+    console.error(options.error, "color: red", ...args);
   }
 }
 export function debug(...args: any[]): void {
-  if (LogLevel[options.logLevel] === LogLevel.debug) {
+  if (LogLevel[options.level] === LogLevel.debug) {
     // console.trace("[DEBUG]");
-    console.debug("🟢%cDEBUG: ", "color: green", ...args);
+    console.debug(options.debug, "color: green", ...args);
   }
 }

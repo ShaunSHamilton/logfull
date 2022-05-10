@@ -31,7 +31,7 @@ declare const options: {
  *
  * @param ops Options to override the default options.
  */
-export default function Logover(ops?: Partial<typeof options>): void;
+export default function logover(ops?: Partial<typeof options>): void;
 /**
  * Equivalent to `console.info`.
  * @param args The arguments to log.

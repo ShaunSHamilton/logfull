@@ -2,11 +2,11 @@
   "name": "logover",
   "version": "1.0.7",
   "description": "A blazingly brilliant logger for JavaScript applications",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "ppublish": "npm run build && read -r -p \"Have you versioned? [Y/n] \" response && bash -s [[ $response == Y ]]",
+    "prepub": "npm run build",
     "build": "npx tsc",
-    "publish": "npm publish",
+    "pub": "npm publish",
     "test": "ts-node test"
   },
   "repository": {

@@ -42,7 +42,7 @@ const options = {
  *
  * @param ops Options to override the default options.
  */
-export default function Logover(ops?: Partial<typeof options>) {
+export default function logover(ops?: Partial<typeof options>) {
   if (ops) {
     Object.keys(ops).map((key) => {
       if (!options.hasOwnProperty(key)) {

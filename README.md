@@ -72,3 +72,5 @@ Output:
 🔴 I  get  logged 3.
 🔴 I  get  logged
 ```
+
+**NOTE:** This package compiles to ES2022. To use in Node.js, you will either need to use a transpiler, or declare your package as a module.

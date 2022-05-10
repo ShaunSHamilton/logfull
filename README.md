@@ -27,3 +27,48 @@ What would get logged to the console:
 🟠WARN:  2
 🔴ERROR:  3
 ```
+
+## Options
+
+- `level`: The minimum level to log.
+- `info`: The prefix for info logs.
+- `debug`: The prefix for debug logs.
+- `warn`: The prefix for warn logs.
+- `error`: The prefix for error logs.
+
+## Full Example
+
+```javascript
+import logover, { debug, info, warn, error } from "logover";
+
+const logoverOptions = {
+  level: "info",
+  info: "🙂",
+  debug: "🐛",
+  warn: "⚠️",
+  error: "🔴",
+};
+
+logover(logoverOptions);
+
+debug("I ", "do ", "not ", "get ", "logged");
+info("I ", "get ", "logged 1.");
+warn("I ", "get ", "logged 2.");
+error("I ", "get ", "logged 3.");
+
+logover({ level: "error" });
+
+debug("I ", "do ", "not ", "get ", "logged");
+info("I ", "do ", "not ", "get ", "logged");
+warn("I ", "do ", "not ", "get ", "logged");
+error("I ", "get ", "logged");
+```
+
+Output:
+
+```bash
+🙂 I  get  logged 1.
+⚠️ I  get  logged 2.
+🔴 I  get  logged 3.
+🔴 I  get  logged
+```

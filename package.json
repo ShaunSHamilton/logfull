@@ -1,6 +1,6 @@
 {
   "name": "logover",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A blazingly brilliant logger for JavaScript applications",
   "main": "lib/index.js",
   "scripts": {

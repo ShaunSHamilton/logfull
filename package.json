@@ -4,7 +4,7 @@
   "description": "A blazingly brilliant logger for JavaScript applications",
   "main": "src/index.js",
   "scripts": {
-    "prepublish": "npm run build && read -r -p \"Have you versioned? [Y/n] \" response && bash -s [[ $response == Y ]]",
+    "ppublish": "npm run build && read -r -p \"Have you versioned? [Y/n] \" response && bash -s [[ $response == Y ]]",
     "build": "npx tsc",
     "publish": "npm publish",
     "test": "ts-node test"

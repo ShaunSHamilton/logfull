@@ -17,21 +17,21 @@ const options = {
    */
   level: process?.env?.LOG_LEVEL || LogLevel.info,
   /**
-   * @default "🔵INFO: "
+   * @default "🔵 INFO: "
    */
-  info: "🔵INFO: ",
+  info: "🔵 INFO: ",
   /**
-   * @default "🟠WARN: "
+   * @default "🟠 WARN: "
    */
-  warn: "🟠WARN: ",
+  warn: "🟠 WARN: ",
   /**
-   * @default "🔴ERROR: "
+   * @default "🔴 ERROR: "
    */
-  error: "🔴ERROR: ",
+  error: "🔴 ERROR: ",
   /**
-   * @default "🟢DEBUG: "
+   * @default "🟢 DEBUG: "
    */
-  debug: "🟢DEBUG: ",
+  debug: "🟢 DEBUG: ",
 };
 
 /**

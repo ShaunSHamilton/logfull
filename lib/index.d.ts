@@ -7,19 +7,19 @@ declare const options: {
      */
     level: string | number;
     /**
-     * @default "🔵INFO: "
+     * @default "🔵 INFO: "
      */
     info: string;
     /**
-     * @default "🟠WARN: "
+     * @default "🟠 WARN: "
      */
     warn: string;
     /**
-     * @default "🔴ERROR: "
+     * @default "🔴 ERROR: "
      */
     error: string;
     /**
-     * @default "🟢DEBUG: "
+     * @default "🟢 DEBUG: "
      */
     debug: string;
 };

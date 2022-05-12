@@ -3,6 +3,8 @@
  */
 declare const options: {
     /**
+     * The minimum level of logging to output.
+     * @options "debug" | "info" | "warn" | "error"
      * @default "info"
      */
     level: string | number;
@@ -22,6 +24,22 @@ declare const options: {
      * @default "🟢 DEBUG: "
      */
     debug: string;
+    /**
+     * Which logs to output the trace.
+     *
+     * @example ["debug", "info", "warn", "error"]
+     *
+     * @default []
+     */
+    trace: any[];
+    /**
+     * The depth of the trace.
+     *
+     * **NOTE**: This uses the `Error.stackTraceLimit` property which is not supported on all browsers.
+     *
+     * @default 2
+     */
+    stackTraceDepth: number;
 };
 /**
  * Sets the options for the logs.

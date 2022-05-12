@@ -7,7 +7,7 @@
     "prepub": "npm run build",
     "build": "npx tsc",
     "pub": "npm publish",
-    "test": "ts-node test"
+    "test": "node --experimental-specifier-resolution=node --loader ts-node/esm ./test/index.ts"
   },
   "repository": {
     "type": "git",

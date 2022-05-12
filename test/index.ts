@@ -1,10 +1,10 @@
 import logover, { debug, info, warn, error } from "../src/index";
 
-logover({ level: "debug" });
+logover({ level: "debug", trace: ["debug", "warn"] });
 
-debug("0");
+debug("0 with trace");
 info("1");
-warn("2");
+warn("2 with trace");
 error("3");
 
 const logoverOptions = {

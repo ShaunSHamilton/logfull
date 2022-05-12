@@ -13,6 +13,8 @@ const LogLevel = {
  */
 const options = {
   /**
+   * The minimum level of logging to output.
+   * @options "debug" | "info" | "warn" | "error"
    * @default "info"
    */
   level: process?.env?.LOG_LEVEL || LogLevel.info,
@@ -32,6 +34,22 @@ const options = {
    * @default "🟢 DEBUG: "
    */
   debug: "🟢 DEBUG: ",
+  /**
+   * Which logs to output the trace.
+   *
+   * @example ["debug", "info", "warn", "error"]
+   *
+   * @default []
+   */
+  trace: [],
+  /**
+   * The depth of the trace.
+   *
+   * **NOTE**: This uses the `Error.stackTraceLimit` property which is not supported on all browsers.
+   *
+   * @default 2
+   */
+  stackTraceDepth: 2,
 };
 
 /**
@@ -60,6 +78,11 @@ export default function logover(ops?: Partial<typeof options>) {
 export function info(...args: any[]): void {
   if (LogLevel[options.level] <= LogLevel.info) {
     console.info(options.info, ...args);
+    if (options.trace.includes("info")) {
+      Error.stackTraceLimit = options.stackTraceDepth;
+      console.trace("\x1b[36m[INFO] \x1b[0m");
+      console.log("");
+    }
   }
 }
 /**
@@ -69,6 +92,11 @@ export function info(...args: any[]): void {
 export function warn(...args: any[]): void {
   if (LogLevel[options.level] <= LogLevel.warn) {
     console.warn(options.warn, ...args);
+    if (options.trace.includes("warn")) {
+      Error.stackTraceLimit = options.stackTraceDepth;
+      console.trace("\x1b[36m[WARN] \x1b[0m");
+      console.log("");
+    }
   }
 }
 /**
@@ -78,6 +106,11 @@ export function warn(...args: any[]): void {
 export function error(...args: any[]): void {
   if (LogLevel[options.level] <= LogLevel.error) {
     console.error(options.error, ...args);
+    if (options.trace.includes("error")) {
+      Error.stackTraceLimit = options.stackTraceDepth;
+      console.trace("\x1b[36m[ERROR] \x1b[0m");
+      console.log("");
+    }
   }
 }
 /**
@@ -86,7 +119,11 @@ export function error(...args: any[]): void {
  */
 export function debug(...args: any[]): void {
   if (LogLevel[options.level] === LogLevel.debug) {
-    // console.trace("[DEBUG]");
     console.debug(options.debug, ...args);
+    if (options.trace.includes("debug")) {
+      Error.stackTraceLimit = options.stackTraceDepth;
+      console.trace("\x1b[36m[DEBUG] \x1b[0m");
+      console.log("");
+    }
   }
 }

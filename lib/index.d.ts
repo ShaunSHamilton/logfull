@@ -7,7 +7,7 @@ declare const options: {
      * @options "debug" | "info" | "warn" | "error"
      * @default "info"
      */
-    level: string | number;
+    level: string;
     /**
      * @default "🔵 INFO: "
      */

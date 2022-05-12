@@ -35,40 +35,34 @@ What would get logged to the console:
 - `debug`: The prefix for debug logs.
 - `warn`: The prefix for warn logs.
 - `error`: The prefix for error logs.
+- `trace`: The log level to show stack trace for.
+- `stackTraceDepth`: The depth of stack trace to show.
 
 ## Full Example
 
-```javascript
-import logover, { debug, info, warn, error } from "logover";
-
-const logoverOptions = {
-  level: "info",
-  info: "🙂",
-  debug: "🐛",
-  warn: "⚠️",
-  error: "🔴",
-};
-
-logover(logoverOptions);
-
-debug("I ", "do ", "not ", "get ", "logged");
-info("I ", "get ", "logged 1.");
-warn("I ", "get ", "logged 2.");
-error("I ", "get ", "logged 3.");
-
-logover({ level: "error" });
-
-debug("I ", "do ", "not ", "get ", "logged");
-info("I ", "do ", "not ", "get ", "logged");
-warn("I ", "do ", "not ", "get ", "logged");
-error("I ", "get ", "logged");
-```
+See [test/index.ts](https://github.com/ShaunSHamilton/logover/blob/main/test/index.ts)
 
 Output:
 
 ```bash
+🟢 DEBUG:  0 with trace
+Trace: [DEBUG]
+    at debug (file:///home/shauh/logover/src/index.ts:125:15)
+    at file:///home/shauh/logover/test/index.ts:5:1
+
+🔵 INFO:  1
+🟠 WARN:  2 with trace
+Trace: [WARN]
+    at warn (file:///home/shauh/logover/src/index.ts:97:15)
+    at file:///home/shauh/logover/test/index.ts:7:1
+
+🔴 ERROR:  3
 🙂 I  get  logged 1.
 ⚠️ I  get  logged 2.
+Trace: [WARN]
+    at warn (file:///home/shauh/logover/src/index.ts:97:15)
+    at file:///home/shauh/logover/test/index.ts:22:1
+
 🔴 I  get  logged 3.
 🔴 I  get  logged
 ```

@@ -8,10 +8,24 @@ const LogLevel = {
   error: 3,
 };
 
+interface Levels {
+  info: string;
+  warn: string;
+  error: string;
+  debug: string;
+}
+
+type Options = {
+  level: string;
+  trace: string[];
+  stackTraceDepth: number;
+  timestamp: string | null | Partial<Levels>;
+} & Levels;
+
 /**
  * Default options for the logs.
  */
-const options = {
+const options: Options = {
   /**
    * The minimum level of logging to output.
    * @options "debug" | "info" | "warn" | "error"
@@ -74,7 +88,9 @@ const options = {
    *
    * @example {debug: "hh:mm:ss.SSS", info: "YYYY-MM-dd hh:mm:ss.SSS", warn: "W the dd of M in the year YYYY", error: "hh:mm:ss.SSS"}
    *
-   * @default "YYYY-MM-dd hh:mm:ss.SSS"
+   * @type {string | null | {debug?: string, info?: string, warn?: string, error?: string}}
+   *
+   * @default "YYYY-MM-dd hh:mm:ss"
    */
   timestamp: {
     debug: "YYYY-MM-dd hh:mm:ss",
@@ -164,10 +180,6 @@ export function debug(...args: any[]): void {
   }
 }
 
-type Timestamp = {
-  [key in keyof typeof LogLevel]: string;
-};
-
 const THREE_LETTER_MONTH = [
   "Jan",
   "Feb",
@@ -208,7 +220,7 @@ const FULL_DAY = [
 ];
 
 export function useTimestamp(
-  timestamp: string | null | Timestamp,
+  timestamp: Options["timestamp"],
   level: "info" | "warn" | "error" | "debug"
 ): string {
   if (timestamp === null) {

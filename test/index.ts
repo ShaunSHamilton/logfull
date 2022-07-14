@@ -1,4 +1,4 @@
-import logover, { debug, info, warn, error } from "../src/index";
+import logover, { debug, info, warn, error, Options } from "../src/index";
 
 logover({ level: "debug", trace: ["debug", "warn"] });
 
@@ -7,7 +7,7 @@ info("1");
 warn("2 with trace");
 error("3");
 
-const logoverOptions = {
+const logoverOptions: Partial<Options> = {
   level: "info",
   info: "🙂",
   debug: "🐛",

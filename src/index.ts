@@ -1,3 +1,5 @@
+import LogError from "./error";
+
 /**
  * The minimum level of logging to output.
  */
@@ -15,7 +17,7 @@ interface Levels {
   debug: string;
 }
 
-type Options = {
+export type Options = {
   level: string;
   trace: string[];
   stackTraceDepth: number;
@@ -112,7 +114,7 @@ export default function logover(ops?: Partial<typeof options>) {
   if (ops) {
     Object.keys(ops).map((key) => {
       if (!options.hasOwnProperty(key)) {
-        throw new Error(`Logover \nUnknown option: ${key}`);
+        throw new LogError(`Logover \nUnknown option: ${key}`);
       }
       options[key] = ops[key];
     });
@@ -128,8 +130,9 @@ export function info(...args: any[]): void {
     const timestamp = useTimestamp(options.timestamp, "info");
     console.info(options.info, timestamp, ...args);
     if (options.trace.includes("info")) {
-      Error.stackTraceLimit = options.stackTraceDepth;
-      console.trace("\x1b[36m[INFO] \x1b[0m");
+      const error = new LogError("\x1b[36m[INFO] \x1b[0m");
+      error.stackDepth = options.stackTraceDepth;
+      console.log(error.stacks);
       console.log("");
     }
   }
@@ -143,8 +146,9 @@ export function warn(...args: any[]): void {
     const timestamp = useTimestamp(options.timestamp, "warn");
     console.warn(options.warn, timestamp, ...args);
     if (options.trace.includes("warn")) {
-      Error.stackTraceLimit = options.stackTraceDepth;
-      console.trace("\x1b[36m[WARN] \x1b[0m");
+      const error = new LogError("\x1b[36m[WARN] \x1b[0m");
+      error.stackDepth = options.stackTraceDepth;
+      console.log(error.stacks);
       console.log("");
     }
   }
@@ -158,8 +162,9 @@ export function error(...args: any[]): void {
     const timestamp = useTimestamp(options.timestamp, "error");
     console.error(options.error, timestamp, ...args);
     if (options.trace.includes("error")) {
-      Error.stackTraceLimit = options.stackTraceDepth;
-      console.trace("\x1b[36m[ERROR] \x1b[0m");
+      const error = new LogError("\x1b[36m[ERROR] \x1b[0m");
+      error.stackDepth = options.stackTraceDepth;
+      console.log(error.stacks);
       console.log("");
     }
   }
@@ -173,8 +178,9 @@ export function debug(...args: any[]): void {
     const timestamp = useTimestamp(options.timestamp, "debug");
     console.debug(options.debug, timestamp, ...args);
     if (options.trace.includes("debug")) {
-      Error.stackTraceLimit = options.stackTraceDepth;
-      console.trace("\x1b[36m[DEBUG] \x1b[0m");
+      const error = new LogError("\x1b[36m[DEBUG] \x1b[0m");
+      error.stackDepth = options.stackTraceDepth;
+      console.log(error.stacks);
       console.log("");
     }
   }
@@ -233,7 +239,7 @@ export function useTimestamp(
   } else if (timestamp[level]) {
     return formatDate(new Date(), timestamp[level]);
   }
-  throw new Error(
+  throw new LogError(
     "Invalid timestamp format. See https://github.com/ShaunSHamilton/logover for configuration options.\n"
   );
 }

@@ -4,7 +4,7 @@ interface Levels {
     error: string;
     debug: string;
 }
-declare type Options = {
+export declare type Options = {
     level: string;
     trace: string[];
     stackTraceDepth: number;

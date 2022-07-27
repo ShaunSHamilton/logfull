@@ -1,5 +1,5 @@
 /// LogError extends Error to alter the stack trace to not show the first line of the stack trace.
-export default class LogError extends Error {
+export class LogError extends Error {
   stackTraceDepth: number;
   constructor(message: string) {
     super(message);

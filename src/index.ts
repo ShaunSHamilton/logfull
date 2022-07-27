@@ -1,4 +1,4 @@
-import LogError from "./error";
+import { LogError } from "./error";
 
 /**
  * The minimum level of logging to output.
@@ -234,10 +234,12 @@ export function useTimestamp(
   }
   if (typeof timestamp === "string") {
     return formatDate(new Date(), timestamp);
-  } else if (timestamp[level] === undefined) {
+  }
+  const timestampLevel = timestamp[level];
+  if (timestampLevel === undefined) {
     return "";
-  } else if (timestamp[level]) {
-    return formatDate(new Date(), timestamp[level]);
+  } else if (timestampLevel) {
+    return formatDate(new Date(), timestampLevel);
   }
   throw new LogError(
     "Invalid timestamp format. See https://github.com/ShaunSHamilton/logover for configuration options.\n"

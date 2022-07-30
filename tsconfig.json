@@ -13,7 +13,9 @@
     // "Go to Definition" in VSCode
     "declarationMap": true,
     "lib": ["ES2017", "DOM"],
-    "target": "ES5"
+    "target": "ES6",
+    "module": "UMD",
+    "moduleResolution": "Node16"
   },
   "include": ["src"]
 }

@@ -1,4 +1,4 @@
-import { LogError } from "./error";
+import { LogError } from "./error.js";
 
 /**
  * The minimum level of logging to output.

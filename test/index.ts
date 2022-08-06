@@ -1,11 +1,13 @@
-import logover, { debug, info, warn, error, Options } from "../src/index";
+import { Logger, Options, Assert } from "../src/index";
+const logover = new Logger({
+  level: "debug",
+  trace: ["debug", "warn"],
+});
 
-logover({ level: "debug", trace: ["debug", "warn"] });
-
-debug("0 with trace");
-info("1");
-warn("2 with trace");
-error("3");
+logover.debug("0 with trace");
+logover.info("1");
+logover.warn("2 with trace");
+logover.error("3");
 
 const logoverOptions: Partial<Options> = {
   level: "info",
@@ -16,26 +18,34 @@ const logoverOptions: Partial<Options> = {
   timestamp: null,
 };
 
-logover(logoverOptions);
+logover.option = logoverOptions;
 
-debug("I do not get logged.", "Also, there is no date");
-info("I get logged.", "I have no date");
-warn("I", "get", "logged");
-error("I", "get", "logged");
+logover.debug("I do not get logged.", "Also, there is no date");
+logover.info("I get logged.", "I have no date");
+logover.warn("I", "get", "logged");
+logover.error("I", "get", "logged");
 
-logover({ level: "error" });
+logover.option = { level: "error" };
 
-debug("I", "do", "not", "get", "logged");
-info("I", "do", "not", "get", "logged");
-warn("I", "do", "not", "get", "logged");
-error("I", "get", "logged");
+logover.debug("I", "do", "not", "get", "logged");
+logover.info("I", "do", "not", "get", "logged");
+logover.warn("I", "do", "not", "get", "logged");
+logover.error("I", "get", "logged");
 
 logoverOptions.timestamp = "hh:mm:ss.SSS";
-logover(logoverOptions);
+logover.option = logoverOptions;
 
-error("What time I am logged?");
+logover.error("What time I am logged?");
 
 logoverOptions.timestamp = { warn: "[W the dd of M in the year YYYY]" };
 
-logover(logoverOptions);
-warn("That is a nice date format.");
+logover.option = logoverOptions;
+logover.warn("That is a nice date format.");
+
+// ---------------------
+// ASSERTION TESTS
+// ---------------------
+
+const assert = new Assert();
+assert.equal(1, 2);
+assert(false);

@@ -1,0 +1,1 @@
+{"version":3,"file":"assert.d.ts","sourceRoot":"","sources":["../src/assert.ts"],"names":[],"mappings":"AAKA,qBAAa,MAAO,SAAQ,QAAQ;IAClC,OAAO,CAAC,MAAM,CAAO;;IAMrB,MAAM,CAAC,SAAS,EAAE,OAAO,EAAE,GAAG,CAAC,EAAE,MAAM;IAMvC,KAAK,CAAC,CAAC,EAAE,GAAG,EAAE,CAAC,EAAE,GAAG,EAAE,GAAG,CAAC,EAAE,MAAM;CAanC"}
